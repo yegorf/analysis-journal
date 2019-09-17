@@ -6,12 +6,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.analysis_journal.R;
+import com.example.analysis_journal.fragment.AddResultFragment;
+import com.example.analysis_journal.fragment.InfoFragment;
 import com.example.analysis_journal.fragment.JournalFragment;
 
 public class NavigationManager {
 
     public static final String SCREEN_JOURNAL = "SCREEN_JOURNAL";
     public static final String SCREEN_INFO = "SCREEN_INFO";
+    public static final String SCREEN_ADD_RESULT = "SCREEN_ADD_RESULT";
     private FragmentManager fragmentManager;
 
     public NavigationManager(FragmentManager fragmentManager) {
@@ -39,6 +42,9 @@ public class NavigationManager {
             case SCREEN_JOURNAL:
                 return JournalFragment.newInstance();
             case SCREEN_INFO:
+                return InfoFragment.getInstance();
+            case SCREEN_ADD_RESULT:
+                return AddResultFragment.newInstance();
             default:
                 return null;
         }

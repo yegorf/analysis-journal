@@ -19,4 +19,9 @@ public class MainActivity extends AppCompatActivity {
         navigationManager = new NavigationManager(getSupportFragmentManager());
         navigationManager.openFragment(NavigationManager.SCREEN_JOURNAL);
     }
+
+    @Override
+    public void onBackPressed() {
+        navigationManager.navigateBack(this);
+    }
 }

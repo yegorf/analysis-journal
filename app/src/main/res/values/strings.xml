@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">analysis-journal</string>
+    <string name="app_name">Analysis Journal</string>
+    <string name="add_result_button">Add result</string>
+    <string name="analyses_name">Analyses name</string>
+    <string name="analyses_result">Analyses result</string>
+    <string name="date">Date</string>
 </resources>
