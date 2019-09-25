@@ -2,12 +2,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorPinkLight" >
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_journal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#5421" />
+        android:layout_height="match_parent" />
 
     <Button
         android:id="@+id/btn_add_analyse"
@@ -20,6 +21,7 @@
         android:layout_marginRight="7dp"
 
         android:text="+"
-        android:textSize="40sp"/>
+        android:textSize="40sp"
+        android:textColor="@android:color/white"/>
 
 </FrameLayout>

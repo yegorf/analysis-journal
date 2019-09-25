@@ -2,27 +2,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
-    android:background="@color/colorAccent">
+    android:layout_height="60dp"
+    android:background="@color/colorPinkDark"
+    >
 
-    <ImageButton
+    <Button
         android:id="@+id/ib_journal"
         android:layout_width="60dp"
-        android:layout_height="60dp" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="journal"
+        android:lines="1"
+        />
 
-    <ImageButton
+    <Button
         android:id="@+id/ib_info"
         android:layout_width="60dp"
-        android:layout_height="60dp" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="info"
+        android:lines="1"
+        />
 
-    <ImageButton
-        android:id="@+id/ib_document"
-        android:layout_width="60dp"
-        android:layout_height="60dp" />
-
-    <ImageButton
+    <Button
         android:id="@+id/ib_statistic"
         android:layout_width="60dp"
-        android:layout_height="60dp" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="stat"
+        android:lines="1"
+        />
+
+    <Button
+        android:id="@+id/ib_document"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="doc"
+        android:lines="1"
+        />
 
 </LinearLayout>
