@@ -12,12 +12,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.analysis_journal.R;
-import com.example.analysis_journal.entity.Analyse;
+import com.example.analysis_journal.entity.Analysis;
+import com.example.analysis_journal.presenter.AddResultPresenter;
+import com.example.analysis_journal.presenter.AddResultPresenterImpl;
+import com.example.analysis_journal.presenter.Presenter;
+import com.example.analysis_journal.view.AddResultView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class AddResultFragment extends Fragment {
+public class AddResultFragment extends Fragment implements AddResultView {
 
     @BindView(R.id.et_analyse_name)
     public EditText analyseNameEt;
@@ -31,6 +36,9 @@ public class AddResultFragment extends Fragment {
     @BindView(R.id.btn_add_result)
     public Button addResultBtn;
 
+    //TODO inject
+    private AddResultPresenterImpl presenter = new AddResultPresenterImpl();
+
     public static AddResultFragment newInstance() {
         return new AddResultFragment();
     }
@@ -43,11 +51,16 @@ public class AddResultFragment extends Fragment {
         return view;
     }
 
-    private void initViews() {
-        addResultBtn.setOnClickListener(e -> {
-            String name = analyseNameEt.getText().toString();
-            String result = analyseResultEt.getText().toString();
-            String date = analyseDateEt.getText().toString();
-        });
+    @OnClick(R.id.btn_add_result)
+    public void onAddResultClick() {
+        String name = analyseNameEt.getText().toString();
+        String result = analyseResultEt.getText().toString();
+        presenter.addResult(new Analysis(name, result));
+
+    }
+
+    @Override
+    public void addResult() {
+
     }
 }

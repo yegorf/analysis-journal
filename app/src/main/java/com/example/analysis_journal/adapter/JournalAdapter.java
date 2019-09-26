@@ -9,17 +9,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.analysis_journal.R;
-import com.example.analysis_journal.entity.Analyse;
+import com.example.analysis_journal.entity.Analysis;
 
 import java.util.List;
 
 public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalHolder> {
 
-    private List<Analyse> analyses;
+    private List<Analysis> analyses;
     private LayoutInflater inflater;
     private Context context;
 
-    public JournalAdapter(List<Analyse> analyses, LayoutInflater inflater, Context context) {
+    public JournalAdapter(List<Analysis> analyses, LayoutInflater inflater, Context context) {
         this.analyses = analyses;
         this.inflater = inflater;
         this.context = context;
@@ -35,7 +35,7 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalH
 
     @Override
     public void onBindViewHolder(@NonNull JournalHolder holder, int position) {
-        Analyse analyse = analyses.get(position);
+        Analysis analyse = analyses.get(position);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalH
 
     class JournalHolder extends RecyclerView.ViewHolder {
 
-        public JournalHolder(@NonNull View itemView) {
+        JournalHolder(@NonNull View itemView) {
             super(itemView);
         }
     }
