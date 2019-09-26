@@ -52,7 +52,7 @@ public class JournalFragment extends Fragment implements JournalView {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_journal, container, false);
         ButterKnife.bind(this, view);
-        presenter.onCreate(this);
+        //presenter.onCreate(this);
         return view;
     }
 

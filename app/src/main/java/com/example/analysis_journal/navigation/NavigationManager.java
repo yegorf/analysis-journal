@@ -9,12 +9,16 @@ import com.example.analysis_journal.R;
 import com.example.analysis_journal.fragment.AddResultFragment;
 import com.example.analysis_journal.fragment.InfoFragment;
 import com.example.analysis_journal.fragment.JournalFragment;
+import com.example.analysis_journal.fragment.LoginFragment;
+import com.example.analysis_journal.fragment.RegistrationFragment;
 
 public class NavigationManager {
 
     public static final String SCREEN_JOURNAL = "SCREEN_JOURNAL";
     public static final String SCREEN_INFO = "SCREEN_INFO";
     public static final String SCREEN_ADD_RESULT = "SCREEN_ADD_RESULT";
+    public static final String SCREEN_SIGN_IN = "SCREEN_SIGN_IN";
+    public static final String SCREEN_SIGN_UP = "SCREEN_SIGN_UP";
     private FragmentManager fragmentManager;
 
     public NavigationManager(FragmentManager fragmentManager) {
@@ -45,6 +49,10 @@ public class NavigationManager {
                 return InfoFragment.getInstance();
             case SCREEN_ADD_RESULT:
                 return AddResultFragment.newInstance();
+            case SCREEN_SIGN_IN:
+                return LoginFragment.getInstance();
+            case SCREEN_SIGN_UP:
+                return RegistrationFragment.getInstance();
             default:
                 return null;
         }

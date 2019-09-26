@@ -36,13 +36,13 @@ public class LoginFragment extends Fragment implements LoginView {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_add_result, container, false);
+        View view = inflater.inflate(R.layout.fragment_log_in, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
 
     @OnClick(R.id.btn_sign_in)
-    public void onSignInClick() {
+    void onSignInClick() {
         String email = loginEmail.getText().toString();
         String password = loginPassword.getText().toString();
 

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -33,11 +34,11 @@ public class RegistrationFragment extends Fragment implements RegistrationView {
     EditText userEmail;
 
     @BindView(R.id.btn_sign_up)
-    EditText signUpBtn;
+    Button signUpBtn;
 
     private RegistrationPresenter presenter = new RegistrationPresenterImpl(getContext());
 
-    public RegistrationFragment getInstance() {
+    public static RegistrationFragment getInstance() {
         return new RegistrationFragment();
     }
 
@@ -50,7 +51,7 @@ public class RegistrationFragment extends Fragment implements RegistrationView {
     }
 
     @OnClick(R.id.btn_sign_up)
-    public void onSignUpClicked() {
+    void onSignUpClicked() {
         String name = userName.getText().toString();
         String password = userPassword.getText().toString();
         String email = userEmail.getText().toString();

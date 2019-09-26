@@ -1,8 +1,11 @@
 package com.example.analysis_journal.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.analysis_journal.R;
 import com.example.analysis_journal.navigation.NavigationManager;
@@ -18,6 +21,28 @@ public class MainActivity extends AppCompatActivity {
 
         navigationManager = new NavigationManager(getSupportFragmentManager());
         navigationManager.openFragment(NavigationManager.SCREEN_JOURNAL);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_manu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.item_sign_in:
+                navigationManager.openFragment(NavigationManager.SCREEN_SIGN_IN);
+                return true;
+            case R.id.item_sign_up:
+                navigationManager.openFragment(NavigationManager.SCREEN_SIGN_UP);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

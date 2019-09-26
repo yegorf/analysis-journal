@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.analysis_journal.R;
 import com.example.analysis_journal.navigation.NavigationManager;
@@ -19,13 +20,13 @@ import butterknife.OnClick;
 public class NavigationFragment extends Fragment {
 
     @BindView(R.id.ib_journal)
-    public Button journalBtn;
+    public ImageButton journalBtn;
 
     @BindView(R.id.ib_info)
-    public Button infoBtn;
+    public ImageButton infoBtn;
 
-    @BindView(R.id.ib_statistic)
-    public Button statisticBtn;
+    @BindView(R.id.ib_search)
+    public ImageButton statisticBtn;
 
     @BindView(R.id.ib_document)
     public Button documentBtn;

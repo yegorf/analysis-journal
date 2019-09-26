@@ -66,7 +66,7 @@ public class AddResultFragment extends Fragment implements AddResultView {
     public void onChooseDateClick() {
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH) + 1;
+        int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         DatePickerDialog dialog = new DatePickerDialog(getContext(), DatePicker::updateDate, year, month, day);

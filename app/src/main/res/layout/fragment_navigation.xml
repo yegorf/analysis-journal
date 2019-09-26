@@ -6,31 +6,25 @@
     android:background="@color/colorPinkDark"
     >
 
-    <Button
+    <ImageButton
         android:id="@+id/ib_journal"
         android:layout_width="60dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="journal"
-        android:lines="1"
+        android:layout_height="60dp"
+        android:background="@drawable/icon_journal"
         />
 
-    <Button
+    <ImageButton
         android:id="@+id/ib_info"
         android:layout_width="60dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="info"
-        android:lines="1"
+        android:layout_height="60dp"
+        android:background="@drawable/icone_info"
         />
 
-    <Button
-        android:id="@+id/ib_statistic"
+    <ImageButton
+        android:id="@+id/ib_search"
         android:layout_width="60dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="stat"
-        android:lines="1"
+        android:background="@drawable/icon_search"
         />
 
     <Button
