@@ -1,10 +1,17 @@
 package com.example.analysis_journal.fragment;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.analysis_journal.R;
 import com.example.analysis_journal.adapter.JournalAdapter;
@@ -13,13 +20,6 @@ import com.example.analysis_journal.navigation.NavigationManager;
 import com.example.analysis_journal.presenter.JournalPresenter;
 import com.example.analysis_journal.presenter.JournalPresenterImpl;
 import com.example.analysis_journal.view.JournalView;
-
-import androidx.annotation.BinderThread;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 

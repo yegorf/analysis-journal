@@ -1,10 +1,12 @@
 package com.example.analysis_journal.fragment;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,6 +19,8 @@ import com.example.analysis_journal.entity.Analysis;
 import com.example.analysis_journal.presenter.AddResultPresenter;
 import com.example.analysis_journal.presenter.AddResultPresenterImpl;
 import com.example.analysis_journal.view.AddResultView;
+
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,6 +60,17 @@ public class AddResultFragment extends Fragment implements AddResultView {
         String name = analyseNameEt.getText().toString();
         String result = analyseResultEt.getText().toString();
         presenter.addResult(new Analysis(name, result));
+    }
+
+    @OnClick(R.id.et_analyse_date)
+    public void onChooseDateClick() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog dialog = new DatePickerDialog(getContext(), DatePicker::updateDate, year, month, day);
+        dialog.show();
     }
 
     @Override

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.analysis_journal.database.DatabaseSource;
 import com.example.analysis_journal.entity.Analysis;
+import com.example.analysis_journal.entity.User;
 
 import java.util.List;
 
@@ -25,5 +26,10 @@ public class RepositoryImpl implements Repository{
     @Override
     public List<Analysis> getAllAnalyses() {
         return databaseSource.getAllAnalysis();
+    }
+
+    @Override
+    public long addUser(User user) {
+        return 0;
     }
 }
