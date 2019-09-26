@@ -7,18 +7,27 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.analysis_journal.R;
+import com.example.analysis_journal.adapter.JournalAdapter;
+import com.example.analysis_journal.entity.Analysis;
 import com.example.analysis_journal.navigation.NavigationManager;
+import com.example.analysis_journal.presenter.JournalPresenter;
+import com.example.analysis_journal.presenter.JournalPresenterImpl;
+import com.example.analysis_journal.view.JournalView;
 
 import androidx.annotation.BinderThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class JournalFragment extends Fragment {
+public class JournalFragment extends Fragment implements JournalView {
 
     @BindView(R.id.btn_add_analyse)
     public Button addAnalyseBtn;
@@ -32,6 +41,8 @@ public class JournalFragment extends Fragment {
         manager.openFragment(NavigationManager.SCREEN_ADD_RESULT);
     }
 
+    private JournalPresenter presenter = new JournalPresenterImpl(getContext());
+
     public static JournalFragment newInstance() {
         return new JournalFragment();
     }
@@ -41,11 +52,15 @@ public class JournalFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_journal, container, false);
         ButterKnife.bind(this, view);
-        initViews();
+        presenter.onCreate(this);
         return view;
     }
 
-    private void initViews() {
-
+    @Override
+    public void showAnalyses(List<Analysis> analyses) {
+        JournalAdapter adapter = new JournalAdapter(analyses, getContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        journalRecycler.setLayoutManager(layoutManager);
+        journalRecycler.setAdapter(adapter);
     }
 }

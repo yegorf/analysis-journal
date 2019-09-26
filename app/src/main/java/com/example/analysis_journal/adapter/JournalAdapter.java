@@ -19,9 +19,9 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalH
     private LayoutInflater inflater;
     private Context context;
 
-    public JournalAdapter(List<Analysis> analyses, LayoutInflater inflater, Context context) {
+    public JournalAdapter(List<Analysis> analyses, Context context) {
         this.analyses = analyses;
-        this.inflater = inflater;
+        this.inflater = LayoutInflater.from(context);
         this.context = context;
     }
 

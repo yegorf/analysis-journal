@@ -5,18 +5,25 @@ import android.content.Context;
 import com.example.analysis_journal.database.DatabaseSource;
 import com.example.analysis_journal.entity.Analysis;
 
+import java.util.List;
+
 public class RepositoryImpl implements Repository{
 
     private Context context;
     private DatabaseSource databaseSource;
 
-    public RepositoryImpl(Context context, DatabaseSource databaseSource) {
+    public RepositoryImpl(Context context) {
         this.context = context;
-        this.databaseSource = databaseSource;
+        this.databaseSource = new DatabaseSource(context);
     }
 
     @Override
     public long addResult(Analysis analysis) {
         return databaseSource.addAnalysis(analysis);
+    }
+
+    @Override
+    public List<Analysis> getAllAnalyses() {
+        return databaseSource.getAllAnalysis();
     }
 }

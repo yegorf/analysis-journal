@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,7 +16,6 @@ import com.example.analysis_journal.R;
 import com.example.analysis_journal.entity.Analysis;
 import com.example.analysis_journal.presenter.AddResultPresenter;
 import com.example.analysis_journal.presenter.AddResultPresenterImpl;
-import com.example.analysis_journal.presenter.Presenter;
 import com.example.analysis_journal.view.AddResultView;
 
 import butterknife.BindView;
@@ -36,8 +36,7 @@ public class AddResultFragment extends Fragment implements AddResultView {
     @BindView(R.id.btn_add_result)
     public Button addResultBtn;
 
-    //TODO inject
-    private AddResultPresenterImpl presenter = new AddResultPresenterImpl();
+    private AddResultPresenter presenter = new AddResultPresenterImpl(getContext());
 
     public static AddResultFragment newInstance() {
         return new AddResultFragment();
@@ -48,6 +47,7 @@ public class AddResultFragment extends Fragment implements AddResultView {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_result, container, false);
         ButterKnife.bind(this, view);
+        presenter.onCreate(this);
         return view;
     }
 
@@ -56,11 +56,14 @@ public class AddResultFragment extends Fragment implements AddResultView {
         String name = analyseNameEt.getText().toString();
         String result = analyseResultEt.getText().toString();
         presenter.addResult(new Analysis(name, result));
-
     }
 
     @Override
-    public void addResult() {
-
+    public void addResult(long id) {
+        if (id != -1) {
+            Toast.makeText(getContext(), "Fail", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getContext(), "Done", Toast.LENGTH_SHORT).show();
+        }
     }
 }
