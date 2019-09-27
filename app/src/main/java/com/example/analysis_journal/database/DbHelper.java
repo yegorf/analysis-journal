@@ -22,7 +22,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 OPEN_BRACKET +
                 AnalysisContract.AnalysisEntry._ID + INTEGER_TYPE + PRIMARY_KEY + COMMA +
                 AnalysisContract.AnalysisEntry.COLUMN_NAME + TEXT_TYPE + COMMA +
-                AnalysisContract.AnalysisEntry.COLUMN_RESULT + TEXT_TYPE + COMMA +
+                AnalysisContract.AnalysisEntry.COLUMN_RESULT + TEXT_TYPE +
                 CLOSE_BRACKET;
 
     private static final String SQL_CREATE_USER_TABLE =
@@ -31,7 +31,7 @@ public class DbHelper extends SQLiteOpenHelper {
                     UserContract.UserEntry._ID + INTEGER_TYPE + PRIMARY_KEY + COMMA +
                     UserContract.UserEntry.COLUMN_NAME + TEXT_TYPE + COMMA +
                     UserContract.UserEntry.COLUMN_PASSWORD + TEXT_TYPE + COMMA +
-                    UserContract.UserEntry.COLUMN_EMAIL + TEXT_TYPE + COMMA +
+                    UserContract.UserEntry.COLUMN_EMAIL + TEXT_TYPE +
                     CLOSE_BRACKET;
 
 

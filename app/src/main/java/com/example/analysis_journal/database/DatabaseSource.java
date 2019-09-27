@@ -27,6 +27,7 @@ public class DatabaseSource {
         long id;
 
         try {
+            database.beginTransaction();
             contentValues.put(AnalysisContract.AnalysisEntry.COLUMN_NAME, analysis.getName());
             contentValues.put(AnalysisContract.AnalysisEntry.COLUMN_RESULT, analysis.getResult());
             id = database.insert(AnalysisContract.AnalysisEntry.TABLE_NAME, null, contentValues);
@@ -49,8 +50,8 @@ public class DatabaseSource {
 
             try (Cursor cursor = database.query(AnalysisContract.AnalysisEntry.TABLE_NAME, projection,
                     null, null, null, null, null)) {
-                Analysis analysis = new Analysis();
                 while (cursor.moveToNext()) {
+                    Analysis analysis = new Analysis();
                     analysis.setName(cursor.getString(cursor.getColumnIndex(AnalysisContract.AnalysisEntry.COLUMN_NAME)));
                     analysis.setResult(cursor.getString(cursor.getColumnIndex(AnalysisContract.AnalysisEntry.COLUMN_RESULT)));
                     result.add(analysis);

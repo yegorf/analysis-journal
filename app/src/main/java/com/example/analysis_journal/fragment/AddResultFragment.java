@@ -40,7 +40,7 @@ public class AddResultFragment extends Fragment implements AddResultView {
     @BindView(R.id.btn_add_result)
     public Button addResultBtn;
 
-    private AddResultPresenter presenter = new AddResultPresenterImpl(getContext());
+    private AddResultPresenter presenter;// = new AddResultPresenterImpl(getContext());
 
     public static AddResultFragment newInstance() {
         return new AddResultFragment();
@@ -51,6 +51,7 @@ public class AddResultFragment extends Fragment implements AddResultView {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_result, container, false);
         ButterKnife.bind(this, view);
+        presenter = new AddResultPresenterImpl(getContext());
         presenter.onCreate(this);
         return view;
     }
@@ -76,9 +77,9 @@ public class AddResultFragment extends Fragment implements AddResultView {
     @Override
     public void addResult(long id) {
         if (id != -1) {
-            Toast.makeText(getContext(), "Fail", Toast.LENGTH_SHORT).show();
-        } else {
             Toast.makeText(getContext(), "Done", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getContext(), "Fail", Toast.LENGTH_SHORT).show();
         }
     }
 }

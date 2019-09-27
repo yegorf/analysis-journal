@@ -21,7 +21,7 @@ public class AddResultPresenterImpl extends BasePresenter<AddResultView>
 
     @Override
     public void onCreate(AddResultView view) {
-
+        super.onCreate(view);
     }
 
     @Override
