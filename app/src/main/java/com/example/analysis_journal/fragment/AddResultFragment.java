@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.analysis_journal.R;
-import com.example.analysis_journal.entity.Analysis;
+import com.example.analysis_journal.entity.Result;
 import com.example.analysis_journal.presenter.AddResultPresenter;
 import com.example.analysis_journal.presenter.AddResultPresenterImpl;
 import com.example.analysis_journal.view.AddResultView;
@@ -60,7 +60,7 @@ public class AddResultFragment extends Fragment implements AddResultView {
     public void onAddResultClick() {
         String name = analyseNameEt.getText().toString();
         String result = analyseResultEt.getText().toString();
-        presenter.addResult(new Analysis(name, result));
+        presenter.addResult(new Result(name, result));
     }
 
     @OnClick(R.id.et_analyse_date)

@@ -2,7 +2,7 @@ package com.example.analysis_journal.presenter;
 
 import android.content.Context;
 
-import com.example.analysis_journal.entity.Analysis;
+import com.example.analysis_journal.entity.Result;
 import com.example.analysis_journal.repository.Repository;
 import com.example.analysis_journal.repository.RepositoryImpl;
 import com.example.analysis_journal.view.AddResultView;
@@ -30,10 +30,10 @@ public class AddResultPresenterImpl extends BasePresenter<AddResultView>
     }
 
     @Override
-    public void addResult(Analysis analysis) {
+    public void addResult(Result result) {
         AddResultView view = getView();
         if (view != null) {
-            long id = repository.addResult(analysis);
+            long id = repository.addResult(result);
             view.addResult(id);
         }
     }

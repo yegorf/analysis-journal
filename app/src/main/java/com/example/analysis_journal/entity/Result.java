@@ -1,9 +1,17 @@
 package com.example.analysis_journal.entity;
 
-public class Analysis {
+
+public class Result {
     private String name;
     private String result;
-    private String url;
+
+    public Result() {
+    }
+
+    public Result(String name, String result) {
+        this.name = name;
+        this.result = result;
+    }
 
     public String getName() {
         return name;
@@ -19,13 +27,5 @@ public class Analysis {
 
     public void setResult(String result) {
         this.result = result;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 }

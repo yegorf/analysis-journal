@@ -3,7 +3,7 @@ package com.example.analysis_journal.repository;
 import android.content.Context;
 
 import com.example.analysis_journal.database.DatabaseSource;
-import com.example.analysis_journal.entity.Analysis;
+import com.example.analysis_journal.entity.Result;
 import com.example.analysis_journal.entity.User;
 
 import java.util.List;
@@ -19,13 +19,13 @@ public class RepositoryImpl implements Repository{
     }
 
     @Override
-    public long addResult(Analysis analysis) {
-        return databaseSource.addAnalysis(analysis);
+    public long addResult(Result result) {
+        return databaseSource.addResult(result);
     }
 
     @Override
-    public List<Analysis> getAllAnalyses() {
-        return databaseSource.getAllAnalysis();
+    public List<Result> getAllAnalyses() {
+        return databaseSource.getAllResults();
     }
 
     @Override

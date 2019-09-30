@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.analysis_journal.database.contract.ResultContract;
 import com.example.analysis_journal.database.contract.AnalysisContract;
 import com.example.analysis_journal.database.contract.UserContract;
 
@@ -14,15 +15,15 @@ import static com.example.analysis_journal.database.Constants.*;
 
 public class DbHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "journal.bd";
+    private static final String DATABASE_NAME = "journal.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String SQL_CREATE_ANALYSIS_TABLE =
-        CREATE_TABLE_IF_NOT_EXISTS + AnalysisContract.AnalysisEntry.TABLE_NAME +
+        CREATE_TABLE_IF_NOT_EXISTS + ResultContract.ResultEntry.TABLE_NAME +
                 OPEN_BRACKET +
-                AnalysisContract.AnalysisEntry._ID + INTEGER_TYPE + PRIMARY_KEY + COMMA +
-                AnalysisContract.AnalysisEntry.COLUMN_NAME + TEXT_TYPE + COMMA +
-                AnalysisContract.AnalysisEntry.COLUMN_RESULT + TEXT_TYPE +
+                ResultContract.ResultEntry._ID + INTEGER_TYPE + PRIMARY_KEY + COMMA +
+                ResultContract.ResultEntry.COLUMN_NAME + TEXT_TYPE + COMMA +
+                ResultContract.ResultEntry.COLUMN_RESULT + TEXT_TYPE +
                 CLOSE_BRACKET;
 
     private static final String SQL_CREATE_USER_TABLE =
@@ -34,10 +35,19 @@ public class DbHelper extends SQLiteOpenHelper {
                     UserContract.UserEntry.COLUMN_EMAIL + TEXT_TYPE +
                     CLOSE_BRACKET;
 
+    private static final String SQL_CREATE_DIRECTORY_TABLE =
+            CREATE_TABLE_IF_NOT_EXISTS + AnalysisContract.AnalysisEntry.TABLE_NAME +
+                    OPEN_BRACKET +
+                    AnalysisContract.AnalysisEntry.COLUMN_NAME + TEXT_TYPE + PRIMARY_KEY + COMMA +
+                    AnalysisContract.AnalysisEntry.COLUMN_RESULT + TEXT_TYPE + COMMA +
+                    AnalysisContract.AnalysisEntry.COLUMN_URL + TEXT_TYPE + COMMA +
+                    CLOSE_BRACKET;
 
-    private static final String SQL_DELETE_ANALYSIS_TABLE = DROP_TABLE_IF_EXISTS + AnalysisContract.AnalysisEntry.TABLE_NAME;
+    private static final String SQL_DELETE_RESULT_TABLE = DROP_TABLE_IF_EXISTS + ResultContract.ResultEntry.TABLE_NAME;
 
     private static final String SQL_DELETE_USER_TABLE = DROP_TABLE_IF_EXISTS + UserContract.UserEntry.TABLE_NAME;
+
+    private static final String SQL_DELETE_DIRECTORY_TABLE = DROP_TABLE_IF_EXISTS + AnalysisContract.AnalysisEntry.TABLE_NAME;
 
     DbHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -47,6 +57,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(SQL_CREATE_ANALYSIS_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_USER_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_DIRECTORY_TABLE);
     }
 
     @Override
@@ -55,8 +66,9 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     private void recreateAll(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(SQL_DELETE_ANALYSIS_TABLE);
+        sqLiteDatabase.execSQL(SQL_DELETE_RESULT_TABLE);
         sqLiteDatabase.execSQL(SQL_DELETE_USER_TABLE);
+        sqLiteDatabase.execSQL(SQL_DELETE_DIRECTORY_TABLE);
         onCreate(sqLiteDatabase);
     }
 }

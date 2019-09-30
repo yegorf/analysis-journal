@@ -2,7 +2,7 @@ package com.example.analysis_journal.presenter;
 
 import android.content.Context;
 
-import com.example.analysis_journal.entity.Analysis;
+import com.example.analysis_journal.entity.Result;
 import com.example.analysis_journal.repository.Repository;
 import com.example.analysis_journal.repository.RepositoryImpl;
 import com.example.analysis_journal.view.JournalView;
@@ -24,7 +24,7 @@ public class JournalPresenterImpl extends BasePresenter<JournalView> implements 
         super.onCreate(view);
 
         if (view != null) {
-            List<Analysis> analyses = repository.getAllAnalyses();
+            List<Result> analyses = repository.getAllAnalyses();
             view.showAnalyses(analyses);
         }
     }
