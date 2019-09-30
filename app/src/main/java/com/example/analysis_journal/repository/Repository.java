@@ -1,5 +1,6 @@
 package com.example.analysis_journal.repository;
 
+import com.example.analysis_journal.entity.Analysis;
 import com.example.analysis_journal.entity.Result;
 import com.example.analysis_journal.entity.User;
 
@@ -9,7 +10,9 @@ public interface Repository {
 
     long addResult(Result result);
 
-    List<Result> getAllAnalyses();
+    List<Result> getAllResults();
 
     long addUser(User user);
+
+    List<Analysis> getAllAnalyses();
 }

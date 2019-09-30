@@ -42,7 +42,7 @@ public class AddResultFragment extends Fragment implements AddResultView {
 
     private AddResultPresenter presenter;// = new AddResultPresenterImpl(getContext());
 
-    public static AddResultFragment newInstance() {
+    public static AddResultFragment getInstance() {
         return new AddResultFragment();
     }
 

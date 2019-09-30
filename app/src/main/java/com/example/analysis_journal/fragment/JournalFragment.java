@@ -42,7 +42,7 @@ public class JournalFragment extends Fragment implements JournalView {
 
     private JournalPresenter presenter = new JournalPresenterImpl(getContext());
 
-    public static JournalFragment newInstance() {
+    public static JournalFragment getInstance() {
         return new JournalFragment();
     }
 

@@ -21,7 +21,7 @@
         />
 
     <ImageButton
-        android:id="@+id/ib_search"
+        android:id="@+id/ib_directory"
         android:layout_width="60dp"
         android:layout_height="match_parent"
         android:background="@drawable/icon_search"

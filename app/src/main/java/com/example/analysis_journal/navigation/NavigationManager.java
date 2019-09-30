@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.analysis_journal.R;
 import com.example.analysis_journal.fragment.AddResultFragment;
+import com.example.analysis_journal.fragment.DirectoryFragment;
 import com.example.analysis_journal.fragment.InfoFragment;
 import com.example.analysis_journal.fragment.JournalFragment;
 import com.example.analysis_journal.fragment.LoginFragment;
@@ -19,6 +20,7 @@ public class NavigationManager {
     public static final String SCREEN_ADD_RESULT = "SCREEN_ADD_RESULT";
     public static final String SCREEN_SIGN_IN = "SCREEN_SIGN_IN";
     public static final String SCREEN_SIGN_UP = "SCREEN_SIGN_UP";
+    public static final String SCREEN_DIRECTORY = "SCREEN_DIRECTORY";
     private FragmentManager fragmentManager;
 
     public NavigationManager(FragmentManager fragmentManager) {
@@ -44,15 +46,17 @@ public class NavigationManager {
     private Fragment getFragmentForScreen(String screenName) {
         switch (screenName) {
             case SCREEN_JOURNAL:
-                return JournalFragment.newInstance();
+                return JournalFragment.getInstance();
             case SCREEN_INFO:
                 return InfoFragment.getInstance();
             case SCREEN_ADD_RESULT:
-                return AddResultFragment.newInstance();
+                return AddResultFragment.getInstance();
             case SCREEN_SIGN_IN:
                 return LoginFragment.getInstance();
             case SCREEN_SIGN_UP:
                 return RegistrationFragment.getInstance();
+            case SCREEN_DIRECTORY:
+                return DirectoryFragment.getInstance();
             default:
                 return null;
         }

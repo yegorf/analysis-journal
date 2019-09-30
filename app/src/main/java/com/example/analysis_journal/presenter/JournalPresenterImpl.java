@@ -24,7 +24,7 @@ public class JournalPresenterImpl extends BasePresenter<JournalView> implements 
         super.onCreate(view);
 
         if (view != null) {
-            List<Result> analyses = repository.getAllAnalyses();
+            List<Result> analyses = repository.getAllResults();
             view.showAnalyses(analyses);
         }
     }
