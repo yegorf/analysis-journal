@@ -5,6 +5,16 @@ public class Analysis {
     private String result;
     private String url;
 
+    public Analysis() {
+
+    }
+
+    public Analysis(String name, String result, String url) {
+        this.name = name;
+        this.result = result;
+        this.url = url;
+    }
+
     public String getName() {
         return name;
     }
@@ -27,5 +37,14 @@ public class Analysis {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "Analysis{" +
+                "name='" + name + '\'' +
+                ", result='" + result + '\'' +
+                ", url='" + url + '\'' +
+                '}';
     }
 }

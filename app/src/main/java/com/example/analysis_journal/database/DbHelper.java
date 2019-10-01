@@ -16,7 +16,8 @@ import static com.example.analysis_journal.database.Constants.*;
 public class DbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "journal.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
+    private Context context;
 
     private static final String SQL_CREATE_ANALYSIS_TABLE =
         CREATE_TABLE_IF_NOT_EXISTS + ResultContract.ResultEntry.TABLE_NAME +
@@ -38,9 +39,10 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String SQL_CREATE_DIRECTORY_TABLE =
             CREATE_TABLE_IF_NOT_EXISTS + AnalysisContract.AnalysisEntry.TABLE_NAME +
                     OPEN_BRACKET +
-                    AnalysisContract.AnalysisEntry.COLUMN_NAME + TEXT_TYPE + PRIMARY_KEY + COMMA +
+                    AnalysisContract.AnalysisEntry._ID + INTEGER_TYPE + PRIMARY_KEY + COMMA +
+                    AnalysisContract.AnalysisEntry.COLUMN_NAME + TEXT_TYPE + COMMA +
                     AnalysisContract.AnalysisEntry.COLUMN_RESULT + TEXT_TYPE + COMMA +
-                    AnalysisContract.AnalysisEntry.COLUMN_URL + TEXT_TYPE + COMMA +
+                    AnalysisContract.AnalysisEntry.COLUMN_URL + TEXT_TYPE +
                     CLOSE_BRACKET;
 
     private static final String SQL_DELETE_RESULT_TABLE = DROP_TABLE_IF_EXISTS + ResultContract.ResultEntry.TABLE_NAME;
@@ -51,6 +53,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     DbHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override

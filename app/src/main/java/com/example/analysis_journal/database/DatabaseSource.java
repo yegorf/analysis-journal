@@ -23,6 +23,25 @@ public class DatabaseSource {
         helper = new DbHelper(context);
     }
 
+    public void fillDirectory(List<Analysis> analyses) {
+        SQLiteDatabase database = helper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        database.beginTransaction();
+        try {
+            for (Analysis analysis : analyses) {
+                contentValues.put(AnalysisContract.AnalysisEntry.COLUMN_NAME, analysis.getName());
+                contentValues.put(AnalysisContract.AnalysisEntry.COLUMN_RESULT, analysis.getResult());
+                contentValues.put(AnalysisContract.AnalysisEntry.COLUMN_URL, analysis.getUrl());
+                database.insert(AnalysisContract.AnalysisEntry.TABLE_NAME, null, contentValues);
+                contentValues.clear();
+            }
+            database.setTransactionSuccessful();
+        } finally {
+            database.endTransaction();
+            database.close();
+        }
+    }
+
     public long addResult(Result result) {
         SQLiteDatabase database = helper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -35,6 +54,7 @@ public class DatabaseSource {
             database.setTransactionSuccessful();
         } finally {
             database.endTransaction();
+            database.close();
         }
         return id;
     }
@@ -59,6 +79,7 @@ public class DatabaseSource {
                 }
             } finally {
                 database.endTransaction();
+                database.close();
             }
         }
         return result;
@@ -86,6 +107,7 @@ public class DatabaseSource {
                 }
             } finally {
                 database.endTransaction();
+                database.close();
             }
         }
         return result;

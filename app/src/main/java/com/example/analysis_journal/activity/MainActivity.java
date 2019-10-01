@@ -1,14 +1,21 @@
 package com.example.analysis_journal.activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.analysis_journal.R;
+import com.example.analysis_journal.database.DatabaseSource;
+import com.example.analysis_journal.entity.Analysis;
 import com.example.analysis_journal.navigation.NavigationManager;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 

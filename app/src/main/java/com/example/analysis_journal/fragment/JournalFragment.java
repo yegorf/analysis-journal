@@ -40,7 +40,7 @@ public class JournalFragment extends Fragment implements JournalView {
         manager.openFragment(NavigationManager.SCREEN_ADD_RESULT);
     }
 
-    private JournalPresenter presenter = new JournalPresenterImpl(getContext());
+    private JournalPresenter presenter;
 
     public static JournalFragment getInstance() {
         return new JournalFragment();
@@ -51,7 +51,8 @@ public class JournalFragment extends Fragment implements JournalView {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_journal, container, false);
         ButterKnife.bind(this, view);
-        //presenter.onCreate(this);
+        presenter = new JournalPresenterImpl(getContext());
+        presenter.onCreate(this);
         return view;
     }
 

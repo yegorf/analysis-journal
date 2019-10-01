@@ -2,6 +2,7 @@ package com.example.analysis_journal.presenter;
 
 import android.content.Context;
 
+import com.example.analysis_journal.database.util.DirectoryFiller;
 import com.example.analysis_journal.entity.Result;
 import com.example.analysis_journal.repository.Repository;
 import com.example.analysis_journal.repository.RepositoryImpl;
@@ -27,6 +28,8 @@ public class JournalPresenterImpl extends BasePresenter<JournalView> implements 
             List<Result> analyses = repository.getAllResults();
             view.showAnalyses(analyses);
         }
+
+        DirectoryFiller.fillDirectory(context);
     }
 
     @Override
