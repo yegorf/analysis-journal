@@ -60,9 +60,11 @@ public class AddResultFragment extends Fragment implements AddResultView {
     public void onAddResultClick() {
         String name = analyseNameEt.getText().toString();
         String result = analyseResultEt.getText().toString();
-        presenter.addResult(new Result(name, result));
+        String date = analyseDateEt.getText().toString();
+        presenter.addResult(new Result(name, result, date));
     }
 
+    private DatePickerDialog dialog;
     @OnClick(R.id.et_analyse_date)
     public void onChooseDateClick() {
         Calendar calendar = Calendar.getInstance();
@@ -70,7 +72,7 @@ public class AddResultFragment extends Fragment implements AddResultView {
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        DatePickerDialog dialog = new DatePickerDialog(getContext(), DatePicker::updateDate, year, month, day);
+        dialog = new DatePickerDialog(getContext(), (datePicker, i, i1, i2) -> analyseDateEt.setText(i2 + "." + i1 + "." + i), year, month, day);
         dialog.show();
     }
 

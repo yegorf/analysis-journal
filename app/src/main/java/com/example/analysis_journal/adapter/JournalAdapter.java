@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +13,9 @@ import com.example.analysis_journal.R;
 import com.example.analysis_journal.entity.Result;
 
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalHolder> {
 
@@ -35,7 +39,8 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalH
 
     @Override
     public void onBindViewHolder(@NonNull JournalHolder holder, int position) {
-        Result analyse = analyses.get(position);
+        Result result = analyses.get(position);
+        holder.setText(result);
     }
 
     @Override
@@ -44,9 +49,20 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalH
     }
 
     class JournalHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.tv_holder_name)
+        TextView nameTv;
+
+        @BindView(R.id.tv_holder_result)
+        TextView resultTv;
 
         JournalHolder(@NonNull View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+
+        void setText(Result result) {
+            nameTv.setText(result.getName());
+            resultTv.setText(result.getResult());
         }
     }
 }

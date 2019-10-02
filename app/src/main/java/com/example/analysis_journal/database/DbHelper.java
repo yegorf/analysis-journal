@@ -6,27 +6,33 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.example.analysis_journal.database.contract.ResultContract;
 import com.example.analysis_journal.database.contract.AnalysisContract;
+import com.example.analysis_journal.database.contract.ResultContract;
 import com.example.analysis_journal.database.contract.UserContract;
-import com.example.analysis_journal.database.util.DirectoryFiller;
 
-import static com.example.analysis_journal.database.Constants.*;
+import static com.example.analysis_journal.database.Constants.CLOSE_BRACKET;
+import static com.example.analysis_journal.database.Constants.COMMA;
+import static com.example.analysis_journal.database.Constants.CREATE_TABLE_IF_NOT_EXISTS;
+import static com.example.analysis_journal.database.Constants.DROP_TABLE_IF_EXISTS;
+import static com.example.analysis_journal.database.Constants.INTEGER_TYPE;
+import static com.example.analysis_journal.database.Constants.OPEN_BRACKET;
+import static com.example.analysis_journal.database.Constants.PRIMARY_KEY;
+import static com.example.analysis_journal.database.Constants.TEXT_TYPE;
 
 
 public class DbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "journal.db";
-    private static final int DATABASE_VERSION = 6;
-    private Context context;
+    private static final int DATABASE_VERSION = 8;
 
     private static final String SQL_CREATE_ANALYSIS_TABLE =
-        CREATE_TABLE_IF_NOT_EXISTS + ResultContract.ResultEntry.TABLE_NAME +
-                OPEN_BRACKET +
-                ResultContract.ResultEntry._ID + INTEGER_TYPE + PRIMARY_KEY + COMMA +
-                ResultContract.ResultEntry.COLUMN_NAME + TEXT_TYPE + COMMA +
-                ResultContract.ResultEntry.COLUMN_RESULT + TEXT_TYPE +
-                CLOSE_BRACKET;
+            CREATE_TABLE_IF_NOT_EXISTS + ResultContract.ResultEntry.TABLE_NAME +
+                    OPEN_BRACKET +
+                    ResultContract.ResultEntry._ID + INTEGER_TYPE + PRIMARY_KEY + COMMA +
+                    ResultContract.ResultEntry.COLUMN_NAME + TEXT_TYPE + COMMA +
+                    ResultContract.ResultEntry.COLUMN_RESULT + TEXT_TYPE +
+                    ResultContract.ResultEntry.COLUMN_DATE + TEXT_TYPE +
+                    CLOSE_BRACKET;
 
     private static final String SQL_CREATE_USER_TABLE =
             CREATE_TABLE_IF_NOT_EXISTS + UserContract.UserEntry.TABLE_NAME +
@@ -52,6 +58,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private static final String SQL_DELETE_DIRECTORY_TABLE = DROP_TABLE_IF_EXISTS + AnalysisContract.AnalysisEntry.TABLE_NAME;
 
+    private Context context;
+
     DbHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
@@ -62,7 +70,6 @@ public class DbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_ANALYSIS_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_USER_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_DIRECTORY_TABLE);
-        //sqLiteDatabase.execSQL(DirectoryFiller.getAnalisesInsert(context));
     }
 
     @Override

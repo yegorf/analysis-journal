@@ -32,10 +32,6 @@ public class MainActivity extends AppCompatActivity {
         navigationManager.openFragment(NavigationManager.SCREEN_JOURNAL);
 
         DirectoryFiller.fillDirectory(this);
-        List<Analysis> analyses = new DatabaseSource(this).getAllAnalyses();
-        for (Analysis a : analyses) {
-            Log.d("jija", a.toString());
-        }
     }
 
     @Override

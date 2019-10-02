@@ -24,36 +24,25 @@ public class DatabaseSource {
     }
 
     public void fillDirectory(List<Analysis> analyses) {
-        SQLiteDatabase database = helper.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        //database.beginTransaction();
-        try {
+        try (SQLiteDatabase database = helper.getWritableDatabase()) {
+            ContentValues contentValues = new ContentValues();
             for (Analysis analysis : analyses) {
                 contentValues.put(AnalysisContract.AnalysisEntry.COLUMN_NAME, analysis.getName());
                 contentValues.put(AnalysisContract.AnalysisEntry.COLUMN_RESULT, analysis.getResult());
                 contentValues.put(AnalysisContract.AnalysisEntry.COLUMN_URL, analysis.getUrl());
                 database.insert(AnalysisContract.AnalysisEntry.TABLE_NAME, null, contentValues);
             }
-            //database.setTransactionSuccessful();
-        } finally {
-            database.endTransaction();
-            database.close();
         }
     }
 
     public long addResult(Result result) {
-        SQLiteDatabase database = helper.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
         long id;
-
-        try {
+        try (SQLiteDatabase database = helper.getWritableDatabase()) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(ResultContract.ResultEntry.COLUMN_DATE, result.getDate());
             contentValues.put(ResultContract.ResultEntry.COLUMN_NAME, result.getName());
             contentValues.put(ResultContract.ResultEntry.COLUMN_RESULT, result.getResult());
             id = database.insert(ResultContract.ResultEntry.TABLE_NAME, null, contentValues);
-            database.setTransactionSuccessful();
-        } finally {
-            database.endTransaction();
-            database.close();
         }
         return id;
     }
@@ -66,18 +55,16 @@ public class DatabaseSource {
                 ResultContract.ResultEntry.COLUMN_RESULT };
 
         if (database != null) {
-            database.beginTransaction();
-
             try (Cursor cursor = database.query(ResultContract.ResultEntry.TABLE_NAME, projection,
                     null, null, null, null, null)) {
-                Result analysis = new Result();
                 while (cursor.moveToNext()) {
+                    Result analysis = new Result();
                     analysis.setName(cursor.getString(cursor.getColumnIndex(ResultContract.ResultEntry.COLUMN_NAME)));
                     analysis.setResult(cursor.getString(cursor.getColumnIndex(ResultContract.ResultEntry.COLUMN_RESULT)));
+                    analysis.setDate(cursor.getString(cursor.getColumnIndex(ResultContract.ResultEntry.COLUMN_DATE)));
                     result.add(analysis);
                 }
             } finally {
-                database.endTransaction();
                 database.close();
             }
         }
@@ -100,8 +87,8 @@ public class DatabaseSource {
                 while (cursor.moveToNext()) {
                     Analysis analysis = new Analysis();
                     analysis.setName(cursor.getString(cursor.getColumnIndex(AnalysisContract.AnalysisEntry.COLUMN_NAME)));
-                    analysis.setName(cursor.getString(cursor.getColumnIndex(AnalysisContract.AnalysisEntry.COLUMN_RESULT)));
-                    analysis.setName(cursor.getString(cursor.getColumnIndex(AnalysisContract.AnalysisEntry.COLUMN_URL)));
+                    analysis.setResult(cursor.getString(cursor.getColumnIndex(AnalysisContract.AnalysisEntry.COLUMN_RESULT)));
+                    analysis.setUrl(cursor.getString(cursor.getColumnIndex(AnalysisContract.AnalysisEntry.COLUMN_URL)));
                     result.add(analysis);
                 }
             } finally {

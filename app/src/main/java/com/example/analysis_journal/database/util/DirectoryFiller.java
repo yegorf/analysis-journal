@@ -39,9 +39,6 @@ public class DirectoryFiller {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            for (Analysis a : analyses) {
-                Log.d("jija", a.toString());
-            }
             DatabaseSource source = new DatabaseSource(context);
             source.fillDirectory(analyses);
         }
