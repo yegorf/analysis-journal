@@ -26,16 +26,15 @@ public class DatabaseSource {
     public void fillDirectory(List<Analysis> analyses) {
         SQLiteDatabase database = helper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        database.beginTransaction();
+        //database.beginTransaction();
         try {
             for (Analysis analysis : analyses) {
                 contentValues.put(AnalysisContract.AnalysisEntry.COLUMN_NAME, analysis.getName());
                 contentValues.put(AnalysisContract.AnalysisEntry.COLUMN_RESULT, analysis.getResult());
                 contentValues.put(AnalysisContract.AnalysisEntry.COLUMN_URL, analysis.getUrl());
                 database.insert(AnalysisContract.AnalysisEntry.TABLE_NAME, null, contentValues);
-                contentValues.clear();
             }
-            database.setTransactionSuccessful();
+            //database.setTransactionSuccessful();
         } finally {
             database.endTransaction();
             database.close();
@@ -98,8 +97,8 @@ public class DatabaseSource {
 
             try (Cursor cursor = database.query(AnalysisContract.AnalysisEntry.TABLE_NAME, projection,
                     null, null, null, null, null)) {
-                Analysis analysis = new Analysis();
                 while (cursor.moveToNext()) {
+                    Analysis analysis = new Analysis();
                     analysis.setName(cursor.getString(cursor.getColumnIndex(AnalysisContract.AnalysisEntry.COLUMN_NAME)));
                     analysis.setName(cursor.getString(cursor.getColumnIndex(AnalysisContract.AnalysisEntry.COLUMN_RESULT)));
                     analysis.setName(cursor.getString(cursor.getColumnIndex(AnalysisContract.AnalysisEntry.COLUMN_URL)));

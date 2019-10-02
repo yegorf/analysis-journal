@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import com.example.analysis_journal.database.contract.ResultContract;
 import com.example.analysis_journal.database.contract.AnalysisContract;
 import com.example.analysis_journal.database.contract.UserContract;
+import com.example.analysis_journal.database.util.DirectoryFiller;
 
 import static com.example.analysis_journal.database.Constants.*;
 
@@ -16,7 +17,7 @@ import static com.example.analysis_journal.database.Constants.*;
 public class DbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "journal.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 6;
     private Context context;
 
     private static final String SQL_CREATE_ANALYSIS_TABLE =
@@ -61,6 +62,7 @@ public class DbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_ANALYSIS_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_USER_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_DIRECTORY_TABLE);
+        //sqLiteDatabase.execSQL(DirectoryFiller.getAnalisesInsert(context));
     }
 
     @Override

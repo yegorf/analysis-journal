@@ -28,8 +28,6 @@ public class JournalPresenterImpl extends BasePresenter<JournalView> implements 
             List<Result> analyses = repository.getAllResults();
             view.showAnalyses(analyses);
         }
-
-        DirectoryFiller.fillDirectory(context);
     }
 
     @Override
