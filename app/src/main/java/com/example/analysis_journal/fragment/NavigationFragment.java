@@ -28,9 +28,6 @@ public class NavigationFragment extends Fragment {
     @BindView(R.id.ib_directory)
     public ImageButton statisticBtn;
 
-    @BindView(R.id.ib_document)
-    public Button documentBtn;
-
     @OnClick(R.id.ib_journal)
     void redirectJournal() {
         NavigationManager manager = new NavigationManager(getFragmentManager());
@@ -41,12 +38,6 @@ public class NavigationFragment extends Fragment {
     void redirectInfo() {
         NavigationManager manager = new NavigationManager(getFragmentManager());
         manager.openFragment(NavigationManager.SCREEN_INFO);
-    }
-
-    @OnClick(R.id.ib_directory)
-    void redirectDirectory() {
-        NavigationManager manager = new NavigationManager(getFragmentManager());
-        manager.openFragment(NavigationManager.SCREEN_DIRECTORY);
     }
 
     @Nullable

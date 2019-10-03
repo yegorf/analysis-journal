@@ -1,6 +1,7 @@
 package com.example.analysis_journal.adapter;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +63,7 @@ public class DirectoryAdapter extends RecyclerView.Adapter<DirectoryAdapter.Anal
 
         void setText(Analysis analysis) {
             name.setText(analysis.getName());
-            norma.setText(analysis.getResult());
+            norma.setText(Html.fromHtml(analysis.getResult()));
         }
     }
 }

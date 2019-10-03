@@ -7,7 +7,7 @@
     <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/result_holder_bg"
+        android:background="@color/colorSearch"
         />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -15,6 +15,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         />
 
 </LinearLayout>

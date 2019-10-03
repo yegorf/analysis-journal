@@ -7,18 +7,20 @@
 
     <TextView
         android:id="@+id/tv_analysis_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
+        android:background="@color/colorMedicRed"
         android:text="Анализ"
         />
 
     <TextView
         android:id="@+id/tv_analysis_norma"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Допустимые нормы"
         android:textStyle="italic"
+        android:background="@color/colorSearch"
         />
 
 </LinearLayout>

@@ -1,34 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
     android:layout_marginStart="2dp"
     android:layout_marginEnd="2dp"
-    android:background="@drawable/result_holder_bg">
+    >
 
-    <TextView
-        android:id="@+id/tv_holder_date"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="12.01.2019"
-        android:textSize="30sp"
-        android:textStyle="italic"/>
+        android:orientation="horizontal"
+        android:background="@color/colorMedicRed">
 
-    <TextView
-        android:id="@+id/tv_holder_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="name"
-        android:textSize="30sp"
-        android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tv_holder_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tv_holder_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12.01.2019"
+            android:textSize="30sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_holder_name"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <TextView
         android:id="@+id/tv_holder_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorSearch"
         android:text="result"
-        android:textSize="30sp"/>
+        android:textSize="30sp" />
 
 </LinearLayout>

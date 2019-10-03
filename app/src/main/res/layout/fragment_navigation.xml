@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:background="@color/colorPinkDark"
+    android:background="@color/colorMedicRed"
     >
 
     <ImageButton
@@ -27,13 +27,12 @@
         android:background="@drawable/icone_info"
         />
 
-    <Button
-        android:id="@+id/ib_document"
-        android:layout_width="60dp"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="doc"
-        android:lines="1"
+        android:text="Yehor"
+        android:gravity="center"
+        android:textSize="22sp"
         />
 
 </LinearLayout>
