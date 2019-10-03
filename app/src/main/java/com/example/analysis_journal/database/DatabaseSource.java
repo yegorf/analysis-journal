@@ -7,8 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.analysis_journal.database.contract.AnalysisContract;
 import com.example.analysis_journal.database.contract.ResultContract;
+import com.example.analysis_journal.database.contract.UserContract;
 import com.example.analysis_journal.entity.Analysis;
 import com.example.analysis_journal.entity.Result;
+import com.example.analysis_journal.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +45,19 @@ public class DatabaseSource {
             contentValues.put(ResultContract.ResultEntry.COLUMN_NAME, result.getName());
             contentValues.put(ResultContract.ResultEntry.COLUMN_RESULT, result.getResult());
             id = database.insert(ResultContract.ResultEntry.TABLE_NAME, null, contentValues);
+        }
+        return id;
+    }
+
+    public long addUser(User user) {
+        long id;
+        try (SQLiteDatabase database = helper.getWritableDatabase()) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(UserContract.UserEntry.COLUMN_NAME, user.getName());
+            contentValues.put(UserContract.UserEntry.COLUMN_SEX, user.getSex().getText());
+            contentValues.put(UserContract.UserEntry.COLUMN_EMAIL, user.getEmail());
+            contentValues.put(UserContract.UserEntry.COLUMN_PASSWORD, user.getPassword());
+            id = database.insert(UserContract.UserEntry.TABLE_NAME, null, contentValues);
         }
         return id;
     }

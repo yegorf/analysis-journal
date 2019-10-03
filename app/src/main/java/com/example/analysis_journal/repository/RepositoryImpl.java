@@ -31,7 +31,7 @@ public class RepositoryImpl implements Repository{
 
     @Override
     public long addUser(User user) {
-        return 0;
+        return databaseSource.addUser(user);
     }
 
     @Override

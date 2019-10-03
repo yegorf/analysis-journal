@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.analysis_journal.R;
+import com.example.analysis_journal.entity.Sex;
 import com.example.analysis_journal.entity.User;
 import com.example.analysis_journal.presenter.RegistrationPresenter;
 import com.example.analysis_journal.presenter.RegistrationPresenterImpl;
@@ -36,7 +38,13 @@ public class RegistrationFragment extends Fragment implements RegistrationView {
     @BindView(R.id.btn_sign_up)
     Button signUpBtn;
 
-    private RegistrationPresenter presenter = new RegistrationPresenterImpl(getContext());
+    @BindView(R.id.rb_male)
+    RadioButton maleRb;
+
+    @BindView(R.id.rb_female)
+    RadioButton femaleRb;
+
+    private RegistrationPresenter presenter;
 
     public static RegistrationFragment getInstance() {
         return new RegistrationFragment();
@@ -47,6 +55,8 @@ public class RegistrationFragment extends Fragment implements RegistrationView {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_registration, container, false);
         ButterKnife.bind(this, view);
+        presenter = new RegistrationPresenterImpl(getContext());
+        presenter.onCreate(this);
         return view;
     }
 
@@ -56,15 +66,22 @@ public class RegistrationFragment extends Fragment implements RegistrationView {
         String password = userPassword.getText().toString();
         String email = userEmail.getText().toString();
 
-        presenter.addUser(new User(name, password, email));
+        Sex sex;
+        if (maleRb.isSelected()) {
+            sex = Sex.MALE;
+        } else {
+            sex = Sex.FEMALE;
+        }
+
+        presenter.addUser(new User(name, password, email, sex));
     }
 
     @Override
     public void addUser(long id) {
         if (id != -1) {
-            Toast.makeText(getContext(), "Fail", Toast.LENGTH_SHORT).show();
-        } else {
             Toast.makeText(getContext(), "Done", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getContext(), "Fail", Toast.LENGTH_SHORT).show();
         }
     }
 }

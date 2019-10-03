@@ -5,15 +5,17 @@ public class User {
     private String name;
     private String password;
     private String email;
+    private Sex sex;
 
     public User() {
 
     }
 
-    public User(String name, String email, String password) {
+    public User(String name, String email, String password, Sex sex) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.sex = sex;
     }
 
     public String getName() {
@@ -38,5 +40,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
     }
 }
