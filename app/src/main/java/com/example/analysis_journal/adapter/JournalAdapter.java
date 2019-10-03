@@ -55,6 +55,9 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalH
         @BindView(R.id.tv_holder_result)
         TextView resultTv;
 
+        @BindView(R.id.tv_holder_date)
+        TextView dateTv;
+
         JournalHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -63,6 +66,7 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.JournalH
         void setText(Result result) {
             nameTv.setText(result.getName());
             resultTv.setText(result.getResult());
+            dateTv.setText(result.getDate());
         }
     }
 }

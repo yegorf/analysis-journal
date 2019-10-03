@@ -3,6 +3,7 @@ package com.example.analysis_journal.database;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -23,15 +24,15 @@ import static com.example.analysis_journal.database.Constants.TEXT_TYPE;
 public class DbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "journal.db";
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 2;
 
     private static final String SQL_CREATE_ANALYSIS_TABLE =
             CREATE_TABLE_IF_NOT_EXISTS + ResultContract.ResultEntry.TABLE_NAME +
                     OPEN_BRACKET +
                     ResultContract.ResultEntry._ID + INTEGER_TYPE + PRIMARY_KEY + COMMA +
+                    ResultContract.ResultEntry.COLUMN_DATE + TEXT_TYPE + COMMA +
                     ResultContract.ResultEntry.COLUMN_NAME + TEXT_TYPE + COMMA +
                     ResultContract.ResultEntry.COLUMN_RESULT + TEXT_TYPE +
-                    ResultContract.ResultEntry.COLUMN_DATE + TEXT_TYPE +
                     CLOSE_BRACKET;
 
     private static final String SQL_CREATE_USER_TABLE =
@@ -67,6 +68,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        Log.d("jija", "create");
         sqLiteDatabase.execSQL(SQL_CREATE_ANALYSIS_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_USER_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_DIRECTORY_TABLE);

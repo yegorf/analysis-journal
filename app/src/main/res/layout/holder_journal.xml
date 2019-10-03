@@ -7,6 +7,14 @@
     android:background="@color/colorAccent">
 
     <TextView
+        android:id="@+id/tv_holder_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="12.01.2019"
+        android:textSize="30sp"
+        android:textStyle="italic"/>
+
+    <TextView
         android:id="@+id/tv_holder_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

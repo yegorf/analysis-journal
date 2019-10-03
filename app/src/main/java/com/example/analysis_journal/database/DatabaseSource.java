@@ -52,7 +52,8 @@ public class DatabaseSource {
         List<Result> result = new ArrayList<>();
 
         String[] projection = { ResultContract.ResultEntry.COLUMN_NAME,
-                ResultContract.ResultEntry.COLUMN_RESULT };
+                ResultContract.ResultEntry.COLUMN_RESULT,
+                ResultContract.ResultEntry.COLUMN_DATE};
 
         if (database != null) {
             try (Cursor cursor = database.query(ResultContract.ResultEntry.TABLE_NAME, projection,
