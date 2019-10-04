@@ -18,6 +18,8 @@ import com.example.analysis_journal.entity.Result;
 import com.example.analysis_journal.navigation.NavigationManager;
 import com.example.analysis_journal.presenter.JournalPresenter;
 import com.example.analysis_journal.presenter.JournalPresenterImpl;
+import com.example.analysis_journal.trash.AddEvent;
+import com.example.analysis_journal.utils.RxBus;
 import com.example.analysis_journal.view.JournalView;
 
 import java.util.List;

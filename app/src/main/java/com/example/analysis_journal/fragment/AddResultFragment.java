@@ -2,6 +2,7 @@ package com.example.analysis_journal.fragment;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import com.example.analysis_journal.R;
 import com.example.analysis_journal.entity.Result;
 import com.example.analysis_journal.presenter.AddResultPresenter;
 import com.example.analysis_journal.presenter.AddResultPresenterImpl;
+import com.example.analysis_journal.trash.AddEvent;
+import com.example.analysis_journal.utils.RxBus;
 import com.example.analysis_journal.view.AddResultView;
 
 import java.util.Calendar;
@@ -25,6 +28,7 @@ import java.util.Calendar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.functions.Action1;
 
 public class AddResultFragment extends Fragment implements AddResultView {
 
@@ -53,6 +57,7 @@ public class AddResultFragment extends Fragment implements AddResultView {
         ButterKnife.bind(this, view);
         presenter = new AddResultPresenterImpl(getContext());
         presenter.onCreate(this);
+
         return view;
     }
 

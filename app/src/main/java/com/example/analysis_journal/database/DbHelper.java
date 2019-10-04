@@ -1,14 +1,11 @@
 package com.example.analysis_journal.database;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.example.analysis_journal.account.CurrentUser;
 import com.example.analysis_journal.database.contract.AnalysisContract;
 import com.example.analysis_journal.database.contract.ResultContract;
 import com.example.analysis_journal.database.contract.UserContract;

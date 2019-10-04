@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.analysis_journal.R;
-import com.example.analysis_journal.account.CurrentUser;
+import com.example.analysis_journal.utils.CurrentUser;
 import com.example.analysis_journal.entity.Sex;
 import com.example.analysis_journal.entity.User;
 import com.example.analysis_journal.presenter.RegistrationPresenter;

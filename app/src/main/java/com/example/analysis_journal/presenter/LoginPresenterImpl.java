@@ -3,7 +3,7 @@ package com.example.analysis_journal.presenter;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.analysis_journal.account.CurrentUser;
+import com.example.analysis_journal.utils.CurrentUser;
 import com.example.analysis_journal.entity.User;
 import com.example.analysis_journal.repository.Repository;
 import com.example.analysis_journal.repository.RepositoryImpl;

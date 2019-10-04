@@ -2,7 +2,7 @@ package com.example.analysis_journal.presenter;
 
 import android.content.Context;
 
-import com.example.analysis_journal.account.CurrentUser;
+import com.example.analysis_journal.utils.CurrentUser;
 import com.example.analysis_journal.repository.Repository;
 import com.example.analysis_journal.repository.RepositoryImpl;
 import com.example.analysis_journal.view.MainActivityView;

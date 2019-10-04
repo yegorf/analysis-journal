@@ -1,4 +1,4 @@
-package com.example.analysis_journal.account;
+package com.example.analysis_journal.utils;
 
 import com.example.analysis_journal.entity.User;
 

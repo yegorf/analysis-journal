@@ -1,29 +1,27 @@
 package com.example.analysis_journal.activity;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.analysis_journal.R;
-import com.example.analysis_journal.account.CurrentUser;
-import com.example.analysis_journal.database.DatabaseSource;
+import com.example.analysis_journal.utils.CurrentUser;
 import com.example.analysis_journal.database.util.DirectoryFiller;
-import com.example.analysis_journal.entity.Analysis;
 import com.example.analysis_journal.navigation.NavigationManager;
-import com.example.analysis_journal.presenter.LoginPresenter;
 import com.example.analysis_journal.presenter.MainActivityPresenter;
 import com.example.analysis_journal.presenter.MainActivityPresenterImpl;
+import com.example.analysis_journal.utils.RxBus;
 import com.example.analysis_journal.view.MainActivityView;
 
-import java.util.List;
+import rx.internal.operators.OperatorObserveOn;
 
 public class MainActivity extends AppCompatActivity implements MainActivityView {
 
@@ -48,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
         navigationManager.openFragment(NavigationManager.SCREEN_JOURNAL);
 
         DirectoryFiller.fillDirectory(this);
+
     }
 
     @Override
