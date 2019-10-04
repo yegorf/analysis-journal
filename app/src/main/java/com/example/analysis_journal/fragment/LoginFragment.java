@@ -27,7 +27,7 @@ public class LoginFragment extends Fragment implements LoginView {
     @BindView(R.id.et_login_password)
     EditText loginPassword;
 
-    private LoginPresenter presenter = new LoginPresenterImpl(getContext());
+    private LoginPresenter presenter;
 
     public static LoginFragment getInstance() {
         return new LoginFragment();
@@ -38,6 +38,8 @@ public class LoginFragment extends Fragment implements LoginView {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_log_in, container, false);
         ButterKnife.bind(this, view);
+        presenter = new LoginPresenterImpl(getContext());
+        presenter.onCreate(this);
         return view;
     }
 

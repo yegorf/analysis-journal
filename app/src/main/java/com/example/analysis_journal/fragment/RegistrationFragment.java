@@ -1,5 +1,7 @@
 package com.example.analysis_journal.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.analysis_journal.R;
+import com.example.analysis_journal.account.CurrentUser;
 import com.example.analysis_journal.entity.Sex;
 import com.example.analysis_journal.entity.User;
 import com.example.analysis_journal.presenter.RegistrationPresenter;
@@ -68,9 +71,9 @@ public class RegistrationFragment extends Fragment implements RegistrationView {
 
         Sex sex;
         if (maleRb.isSelected()) {
-            sex = Sex.MALE;
+            sex = Sex.M;
         } else {
-            sex = Sex.FEMALE;
+            sex = Sex.W;
         }
 
         presenter.addUser(new User(name, password, email, sex));
@@ -80,6 +83,10 @@ public class RegistrationFragment extends Fragment implements RegistrationView {
     public void addUser(long id) {
         if (id != -1) {
             Toast.makeText(getContext(), "Done", Toast.LENGTH_SHORT).show();
+            SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt(CurrentUser.USER_PREFERENCES_ID, (int) id);
+            editor.apply();
         } else {
             Toast.makeText(getContext(), "Fail", Toast.LENGTH_SHORT).show();
         }

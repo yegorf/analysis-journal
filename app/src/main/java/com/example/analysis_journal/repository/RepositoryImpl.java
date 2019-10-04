@@ -38,4 +38,14 @@ public class RepositoryImpl implements Repository{
     public List<Analysis> getAllAnalyses() {
         return databaseSource.getAllAnalyses();
     }
+
+    @Override
+    public User getUserById(int id) {
+        return databaseSource.getUserById(id);
+    }
+
+    @Override
+    public User login(String email, String password) {
+        return databaseSource.getUserByEmailAndPassword(email, password);
+    }
 }

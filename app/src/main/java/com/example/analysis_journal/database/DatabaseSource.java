@@ -4,12 +4,14 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.analysis_journal.database.contract.AnalysisContract;
 import com.example.analysis_journal.database.contract.ResultContract;
 import com.example.analysis_journal.database.contract.UserContract;
 import com.example.analysis_journal.entity.Analysis;
 import com.example.analysis_journal.entity.Result;
+import com.example.analysis_journal.entity.Sex;
 import com.example.analysis_journal.entity.User;
 
 import java.util.ArrayList;
@@ -60,6 +62,72 @@ public class DatabaseSource {
             id = database.insert(UserContract.UserEntry.TABLE_NAME, null, contentValues);
         }
         return id;
+    }
+
+    public User getUserById(int id) {
+        SQLiteDatabase database = helper.getReadableDatabase();
+        String[] projection = {UserContract.UserEntry.COLUMN_NAME,
+                UserContract.UserEntry.COLUMN_EMAIL,
+                UserContract.UserEntry.COLUMN_PASSWORD,
+                UserContract.UserEntry.COLUMN_SEX};
+
+        String selection = UserContract.UserEntry._ID + " = " + id;
+        User user = new User();
+
+        if (database != null) {
+            database.beginTransaction();
+            try {
+                Cursor cursor = database.query(UserContract.UserEntry.TABLE_NAME, projection,
+                        selection, null, null, null, null);
+                if (cursor.moveToNext()) {
+                    user.setName(cursor.getString(cursor.getColumnIndex(UserContract.UserEntry.COLUMN_NAME)));
+                    user.setEmail(cursor.getString(cursor.getColumnIndex(UserContract.UserEntry.COLUMN_EMAIL)));
+                    user.setPassword(cursor.getString(cursor.getColumnIndex(UserContract.UserEntry.COLUMN_PASSWORD)));
+                    user.setSex(Sex.valueOf(cursor.getString(cursor.getColumnIndex(UserContract.UserEntry.COLUMN_SEX))));
+                    cursor.close();
+                }
+            } finally {
+                database.endTransaction();
+                database.close();
+            }
+        }
+        return user;
+    }
+
+    public User getUserByEmailAndPassword(String email, String password) {
+        SQLiteDatabase database = helper.getReadableDatabase();
+        String[] projection = {UserContract.UserEntry.COLUMN_NAME,
+                UserContract.UserEntry.COLUMN_EMAIL,
+                UserContract.UserEntry.COLUMN_PASSWORD,
+                UserContract.UserEntry.COLUMN_SEX};
+
+        Log.d("jija", email + " " + password);
+
+        String selection = UserContract.UserEntry.COLUMN_EMAIL + " = " + "'" + email + "'"
+                + " AND " +
+                UserContract.UserEntry.COLUMN_PASSWORD + " = " + "'" + password + "'";
+        User user = null;
+
+        if (database != null) {
+            database.beginTransaction();
+            try {
+                Cursor cursor = database.query(UserContract.UserEntry.TABLE_NAME, projection,
+                        selection, null, null, null, null);
+                if (cursor.moveToNext()) {
+                    user = new User();
+                    user.setName(cursor.getString(cursor.getColumnIndex(UserContract.UserEntry.COLUMN_NAME)));
+                    user.setEmail(cursor.getString(cursor.getColumnIndex(UserContract.UserEntry.COLUMN_EMAIL)));
+                    user.setPassword(cursor.getString(cursor.getColumnIndex(UserContract.UserEntry.COLUMN_PASSWORD)));
+                    user.setSex(Sex.valueOf(cursor.getString(cursor.getColumnIndex(UserContract.UserEntry.COLUMN_SEX))));
+                    cursor.close();
+                }
+            } finally {
+                database.endTransaction();
+                database.close();
+            }
+        }
+
+        return user;
     }
 
     public List<Result> getAllResults() {

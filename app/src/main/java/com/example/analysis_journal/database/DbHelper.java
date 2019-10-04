@@ -1,12 +1,14 @@
 package com.example.analysis_journal.database;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.example.analysis_journal.account.CurrentUser;
 import com.example.analysis_journal.database.contract.AnalysisContract;
 import com.example.analysis_journal.database.contract.ResultContract;
 import com.example.analysis_journal.database.contract.UserContract;
@@ -69,7 +71,6 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        Log.d("jija", "create");
         sqLiteDatabase.execSQL(SQL_CREATE_ANALYSIS_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_USER_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_DIRECTORY_TABLE);

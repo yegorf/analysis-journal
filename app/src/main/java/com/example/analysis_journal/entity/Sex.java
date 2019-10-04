@@ -1,7 +1,7 @@
 package com.example.analysis_journal.entity;
 
 public enum Sex {
-    MALE("M"), FEMALE("W");
+    M("M"), W("W");
 
     private String text;
 

@@ -15,4 +15,8 @@ public interface Repository {
     long addUser(User user);
 
     List<Analysis> getAllAnalyses();
+
+    User getUserById(int id);
+
+    User login(String email, String password);
 }
