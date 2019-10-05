@@ -2,7 +2,6 @@ package com.example.analysis_journal.fragment;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 
 import com.example.analysis_journal.R;
 import com.example.analysis_journal.constants.Event;
-import com.example.analysis_journal.trash.AddEvent;
 import com.example.analysis_journal.utils.CurrentUser;
 import com.example.analysis_journal.navigation.NavigationManager;
 import com.example.analysis_journal.utils.RxBus;
@@ -56,12 +54,7 @@ public class NavigationFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         setUserLabel();
-
-        RxBus.toObserverable().subscribe((o -> {
-            if (o.equals(Event.SIGN_UP)) {
-                setUserLabel();
-            }
-        }));
+        RxBus.subscribe(Event.SIGN_UP, this::setUserLabel);
         return view;
     }
 
