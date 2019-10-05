@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.analysis_journal.R;
+import com.example.analysis_journal.navigation.NavigationManager;
 import com.example.analysis_journal.utils.CurrentUser;
 import com.example.analysis_journal.entity.Sex;
 import com.example.analysis_journal.entity.User;
@@ -87,6 +88,9 @@ public class RegistrationFragment extends Fragment implements RegistrationView {
             SharedPreferences.Editor editor = preferences.edit();
             editor.putInt(CurrentUser.USER_PREFERENCES_ID, (int) id);
             editor.apply();
+
+            NavigationManager manager = new NavigationManager(getFragmentManager());
+            manager.openFragment(NavigationManager.SCREEN_JOURNAL);
         } else {
             Toast.makeText(getContext(), "Fail", Toast.LENGTH_SHORT).show();
         }

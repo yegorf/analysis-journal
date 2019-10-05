@@ -17,13 +17,15 @@ public class LoginPresenterImpl extends BasePresenter<LoginView> implements Logi
     }
 
     @Override
-    public void login(String email, String password) {
+    public boolean login(String email, String password) {
         User user = repository.login(email, password);
         if (user == null) {
             Log.d("jija", "error");
+            return false;
         } else {
             Log.d("jija", user.toString());
             CurrentUser.setUser(user);
+            return true;
         }
     }
 }

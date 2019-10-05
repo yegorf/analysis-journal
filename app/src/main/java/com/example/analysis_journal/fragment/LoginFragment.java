@@ -5,12 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.analysis_journal.R;
+import com.example.analysis_journal.navigation.NavigationManager;
 import com.example.analysis_journal.presenter.LoginPresenter;
 import com.example.analysis_journal.presenter.LoginPresenterImpl;
 import com.example.analysis_journal.view.LoginView;
@@ -48,6 +50,11 @@ public class LoginFragment extends Fragment implements LoginView {
         String email = loginEmail.getText().toString();
         String password = loginPassword.getText().toString();
 
-        presenter.login(email, password);
+        if(presenter.login(email, password)) {
+            NavigationManager manager = new NavigationManager(getFragmentManager());
+            manager.openFragment(NavigationManager.SCREEN_JOURNAL);
+        } else {
+            Toast.makeText(getContext(), "Incorrect login or password!", Toast.LENGTH_SHORT).show();
+        }
     }
 }
