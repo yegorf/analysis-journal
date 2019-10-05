@@ -44,9 +44,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
 
         navigationManager = new NavigationManager(getSupportFragmentManager());
         navigationManager.openFragment(NavigationManager.SCREEN_JOURNAL);
-
-        DirectoryFiller.fillDirectory(this);
-
     }
 
     @Override

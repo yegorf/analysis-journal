@@ -35,6 +35,12 @@ public class NavigationFragment extends Fragment {
     @BindView(R.id.tv_username)
     public TextView usernameTv;
 
+    @OnClick(R.id.ib_directory)
+    void redirectDirectory() {
+        NavigationManager manager = new NavigationManager(getFragmentManager());
+        manager.openFragment(NavigationManager.SCREEN_DIRECTORY);
+    }
+
     @OnClick(R.id.ib_journal)
     void redirectJournal() {
         NavigationManager manager = new NavigationManager(getFragmentManager());

@@ -2,6 +2,7 @@ package com.example.analysis_journal.presenter;
 
 import android.content.Context;
 
+import com.example.analysis_journal.database.util.DirectoryFiller;
 import com.example.analysis_journal.utils.CurrentUser;
 import com.example.analysis_journal.repository.Repository;
 import com.example.analysis_journal.repository.RepositoryImpl;
@@ -15,6 +16,12 @@ public class MainActivityPresenterImpl extends BasePresenter<MainActivityView> i
     public MainActivityPresenterImpl(Context context) {
         this.context = context;
         repository = new RepositoryImpl(context);
+    }
+
+    @Override
+    public void onCreate(MainActivityView view) {
+        super.onCreate(view);
+        DirectoryFiller.fillDirectory(context);
     }
 
     @Override
