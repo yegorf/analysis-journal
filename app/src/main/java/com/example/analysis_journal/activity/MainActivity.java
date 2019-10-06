@@ -38,12 +38,14 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
 
         SharedPreferences preferences = getPreferences(Context.MODE_PRIVATE);
         int id = preferences.getInt(CurrentUser.USER_PREFERENCES_ID, -1);
+        navigationManager = new NavigationManager(getSupportFragmentManager());
         if (id != -1) {
             presenter.setCurrentUser(id);
+            navigationManager.openFragment(NavigationManager.SCREEN_JOURNAL);
+        } else {
+            navigationManager.openFragment(NavigationManager.SCREEN_SIGN_UP);
         }
 
-        navigationManager = new NavigationManager(getSupportFragmentManager());
-        navigationManager.openFragment(NavigationManager.SCREEN_JOURNAL);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.analysis_journal.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
@@ -19,7 +20,7 @@ public class LoginPresenterImpl extends BasePresenter<LoginView> implements Logi
     }
 
     @Override
-    public boolean login(String email, String password) {
+    public boolean login(Activity activity, String email, String password) {
         User user = repository.login(email, password);
         if (user == null) {
             Log.d("jija", "error");
@@ -27,6 +28,7 @@ public class LoginPresenterImpl extends BasePresenter<LoginView> implements Logi
         } else {
             Log.d("jija", user.toString());
             CurrentUser.setUser(user);
+            CurrentUser.saveUserId(activity, user.getId());
             RxBus.send(Event.SIGN_UP);
             return true;
         }

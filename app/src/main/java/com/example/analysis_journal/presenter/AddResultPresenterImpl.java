@@ -5,12 +5,12 @@ import android.content.Context;
 import com.example.analysis_journal.entity.Result;
 import com.example.analysis_journal.repository.Repository;
 import com.example.analysis_journal.repository.RepositoryImpl;
+import com.example.analysis_journal.utils.CurrentUser;
 import com.example.analysis_journal.view.AddResultView;
 
 public class AddResultPresenterImpl extends BasePresenter<AddResultView>
         implements AddResultPresenter {
 
-    //TODO inject
     private Context context;
     private Repository repository;
 
@@ -33,7 +33,7 @@ public class AddResultPresenterImpl extends BasePresenter<AddResultView>
     public void addResult(Result result) {
         AddResultView view = getView();
         if (view != null) {
-            long id = repository.addResult(result);
+            long id = repository.addResult(result, CurrentUser.getUser().getId());
             view.addResult(id);
         }
     }

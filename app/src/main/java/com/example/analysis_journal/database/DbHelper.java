@@ -23,7 +23,7 @@ import static com.example.analysis_journal.database.Constants.TEXT_TYPE;
 public class DbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "journal.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 7;
 
     private static final String SQL_CREATE_ANALYSIS_TABLE =
             CREATE_TABLE_IF_NOT_EXISTS + ResultContract.ResultEntry.TABLE_NAME +
@@ -31,7 +31,8 @@ public class DbHelper extends SQLiteOpenHelper {
                     ResultContract.ResultEntry._ID + INTEGER_TYPE + PRIMARY_KEY + COMMA +
                     ResultContract.ResultEntry.COLUMN_DATE + TEXT_TYPE + COMMA +
                     ResultContract.ResultEntry.COLUMN_NAME + TEXT_TYPE + COMMA +
-                    ResultContract.ResultEntry.COLUMN_RESULT + TEXT_TYPE +
+                    ResultContract.ResultEntry.COLUMN_RESULT + TEXT_TYPE + COMMA +
+                    ResultContract.ResultEntry.COLUMN_USER_ID + INTEGER_TYPE +
                     CLOSE_BRACKET;
 
     private static final String SQL_CREATE_USER_TABLE =

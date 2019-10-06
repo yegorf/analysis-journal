@@ -50,7 +50,7 @@ public class LoginFragment extends Fragment implements LoginView {
         String email = loginEmail.getText().toString();
         String password = loginPassword.getText().toString();
 
-        if(presenter.login(email, password)) {
+        if(presenter.login(getActivity(), email, password)) {
             NavigationManager manager = new NavigationManager(getFragmentManager());
             manager.openFragment(NavigationManager.SCREEN_JOURNAL);
         } else {

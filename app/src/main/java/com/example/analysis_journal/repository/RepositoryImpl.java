@@ -20,13 +20,13 @@ public class RepositoryImpl implements Repository{
     }
 
     @Override
-    public long addResult(Result result) {
-        return databaseSource.addResult(result);
+    public long addResult(Result result, int userId) {
+        return databaseSource.addResult(result, userId);
     }
 
     @Override
-    public List<Result> getAllResults() {
-        return databaseSource.getAllResults();
+    public List<Result> getAllResults(int userId) {
+        return databaseSource.getAllResults(userId);
     }
 
     @Override

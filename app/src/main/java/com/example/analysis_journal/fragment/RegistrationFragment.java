@@ -77,18 +77,13 @@ public class RegistrationFragment extends Fragment implements RegistrationView {
             sex = Sex.W;
         }
 
-        presenter.addUser(new User(name, email, password, sex));
+        presenter.addUser(getActivity(), new User(name, email, password, sex));
     }
 
     @Override
     public void addUser(long id) {
         if (id != -1) {
             Toast.makeText(getContext(), "Done", Toast.LENGTH_SHORT).show();
-            SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putInt(CurrentUser.USER_PREFERENCES_ID, (int) id);
-            editor.apply();
-
             NavigationManager manager = new NavigationManager(getFragmentManager());
             manager.openFragment(NavigationManager.SCREEN_JOURNAL);
         } else {

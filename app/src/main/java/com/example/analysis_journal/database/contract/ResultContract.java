@@ -12,5 +12,6 @@ public class ResultContract {
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_RESULT = "result";
         public static final String COLUMN_DATE = "date";
+        public static final String COLUMN_USER_ID = "user_id";
     }
 }

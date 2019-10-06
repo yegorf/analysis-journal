@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface Repository {
 
-    long addResult(Result result);
+    long addResult(Result result, int userId);
 
-    List<Result> getAllResults();
+    List<Result> getAllResults(int userId);
 
     long addUser(User user);
 

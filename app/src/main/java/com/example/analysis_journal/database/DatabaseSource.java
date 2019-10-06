@@ -39,13 +39,14 @@ public class DatabaseSource {
         }
     }
 
-    public long addResult(Result result) {
+    public long addResult(Result result, int userId) {
         long id;
         try (SQLiteDatabase database = helper.getWritableDatabase()) {
             ContentValues contentValues = new ContentValues();
             contentValues.put(ResultContract.ResultEntry.COLUMN_DATE, result.getDate());
             contentValues.put(ResultContract.ResultEntry.COLUMN_NAME, result.getName());
             contentValues.put(ResultContract.ResultEntry.COLUMN_RESULT, result.getResult());
+            contentValues.put(ResultContract.ResultEntry.COLUMN_USER_ID, userId);
             id = database.insert(ResultContract.ResultEntry.TABLE_NAME, null, contentValues);
         }
         return id;
@@ -80,6 +81,7 @@ public class DatabaseSource {
                 Cursor cursor = database.query(UserContract.UserEntry.TABLE_NAME, projection,
                         selection, null, null, null, null);
                 if (cursor.moveToNext()) {
+                    user.setId(id);
                     user.setName(cursor.getString(cursor.getColumnIndex(UserContract.UserEntry.COLUMN_NAME)));
                     user.setEmail(cursor.getString(cursor.getColumnIndex(UserContract.UserEntry.COLUMN_EMAIL)));
                     user.setPassword(cursor.getString(cursor.getColumnIndex(UserContract.UserEntry.COLUMN_PASSWORD)));
@@ -96,7 +98,9 @@ public class DatabaseSource {
 
     public User getUserByEmailAndPassword(String email, String password) {
         SQLiteDatabase database = helper.getReadableDatabase();
-        String[] projection = {UserContract.UserEntry.COLUMN_NAME,
+        String[] projection = {
+                UserContract.UserEntry._ID,
+                UserContract.UserEntry.COLUMN_NAME,
                 UserContract.UserEntry.COLUMN_EMAIL,
                 UserContract.UserEntry.COLUMN_PASSWORD,
                 UserContract.UserEntry.COLUMN_SEX};
@@ -113,6 +117,7 @@ public class DatabaseSource {
                         selection, null, null, null, null);
                 if (cursor.moveToNext()) {
                     user = new User();
+                    user.setId(cursor.getInt(cursor.getColumnIndex(UserContract.UserEntry._ID)));
                     user.setName(cursor.getString(cursor.getColumnIndex(UserContract.UserEntry.COLUMN_NAME)));
                     user.setEmail(cursor.getString(cursor.getColumnIndex(UserContract.UserEntry.COLUMN_EMAIL)));
                     user.setPassword(cursor.getString(cursor.getColumnIndex(UserContract.UserEntry.COLUMN_PASSWORD)));
@@ -128,9 +133,11 @@ public class DatabaseSource {
         return user;
     }
 
-    public List<Result> getAllResults() {
+    public List<Result> getAllResults(int userId) {
         SQLiteDatabase database = helper.getReadableDatabase();
         List<Result> result = new ArrayList<>();
+
+        String selection = ResultContract.ResultEntry.COLUMN_USER_ID + " = " + userId;
 
         String[] projection = { ResultContract.ResultEntry.COLUMN_NAME,
                 ResultContract.ResultEntry.COLUMN_RESULT,
@@ -138,7 +145,7 @@ public class DatabaseSource {
 
         if (database != null) {
             try (Cursor cursor = database.query(ResultContract.ResultEntry.TABLE_NAME, projection,
-                    null, null, null, null, null)) {
+                    selection, null, null, null, null)) {
                 while (cursor.moveToNext()) {
                     Result analysis = new Result();
                     analysis.setName(cursor.getString(cursor.getColumnIndex(ResultContract.ResultEntry.COLUMN_NAME)));

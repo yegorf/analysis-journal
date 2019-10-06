@@ -1,5 +1,6 @@
 package com.example.analysis_journal.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.example.analysis_journal.constants.Event;
@@ -22,13 +23,14 @@ public class RegistrationPresenterImpl extends BasePresenter<RegistrationView> i
 
 
     @Override
-    public void addUser(User user) {
+    public void addUser(Activity activity, User user) {
         RegistrationView view = getView();
 
         long id = repository.addUser(user);
 
         if (id != -1) {
             CurrentUser.setUser(repository.getUserById((int) id));
+            CurrentUser.saveUserId(activity, (int) id);
             RxBus.send(Event.SIGN_UP);
         }
 

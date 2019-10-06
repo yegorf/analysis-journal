@@ -2,6 +2,7 @@ package com.example.analysis_journal.entity;
 
 public class User {
 
+    private int id;
     private String name;
     private String password;
     private String email;
@@ -48,5 +49,13 @@ public class User {
 
     public void setSex(Sex sex) {
         this.sex = sex;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
