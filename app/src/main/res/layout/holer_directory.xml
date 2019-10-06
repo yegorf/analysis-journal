@@ -3,14 +3,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="20dp">
+    android:layout_marginBottom="10dp">
 
     <TextView
         android:id="@+id/tv_analysis_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:background="@color/colorMedicRed"
         android:text="Анализ"
         />
 
@@ -20,7 +19,13 @@
         android:layout_height="wrap_content"
         android:text="Допустимые нормы"
         android:textStyle="italic"
-        android:background="@color/colorSearch"
         />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/colorSeparatorLine"
+        android:layout_marginTop="10dp"/>
 
 </LinearLayout>

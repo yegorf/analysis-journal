@@ -3,12 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorPinkLight" >
+    android:background="@color/colorBackground" >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_journal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        />
 
     <Button
         android:id="@+id/btn_add_analyse"
@@ -22,6 +23,6 @@
 
         android:text="+"
         android:textSize="50sp"
-        android:textColor="@android:color/white"/>
+        android:textColor="@color/colorBackground"/>
 
 </FrameLayout>
