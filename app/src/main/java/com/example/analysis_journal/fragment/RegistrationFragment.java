@@ -77,7 +77,7 @@ public class RegistrationFragment extends Fragment implements RegistrationView {
             sex = Sex.W;
         }
 
-        presenter.addUser(new User(name, password, email, sex));
+        presenter.addUser(new User(name, email, password, sex));
     }
 
     @Override

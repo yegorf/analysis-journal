@@ -101,8 +101,6 @@ public class DatabaseSource {
                 UserContract.UserEntry.COLUMN_PASSWORD,
                 UserContract.UserEntry.COLUMN_SEX};
 
-        Log.d("jija", email + " " + password);
-
         String selection = UserContract.UserEntry.COLUMN_EMAIL + " = " + "'" + email + "'"
                 + " AND " +
                 UserContract.UserEntry.COLUMN_PASSWORD + " = " + "'" + password + "'";
