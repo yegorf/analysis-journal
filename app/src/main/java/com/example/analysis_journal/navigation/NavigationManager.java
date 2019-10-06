@@ -71,7 +71,7 @@ public class NavigationManager {
     }
 
     private boolean isBackStackIsEmpty() {
-        return fragmentManager.getBackStackEntryCount() < 1;
+        return fragmentManager.getBackStackEntryCount() < 2;
     }
 
 }

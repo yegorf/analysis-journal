@@ -188,6 +188,20 @@ public class DatabaseSource {
         return result;
     }
 
+    public Cursor getAllAnalysesCursor() {
+        SQLiteDatabase database = helper.getReadableDatabase();
+        List<Analysis> result = new ArrayList<>();
+
+        String[] projection = {AnalysisContract.AnalysisEntry.COLUMN_NAME,
+                AnalysisContract.AnalysisEntry.COLUMN_RESULT,
+                AnalysisContract.AnalysisEntry.COLUMN_URL};
+
+        Cursor cursor = database.query(AnalysisContract.AnalysisEntry.TABLE_NAME, projection,
+                null, null, null, null, null);
+
+        return cursor;
+    }
+
     public Analysis getAnalysisByName(String name) {
         Analysis analysis = new Analysis();
 
